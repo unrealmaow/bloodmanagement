@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('role', ['donor', 'taker', 'admin'])->default('taker');
+            $table->enum('role', ['donor', 'receiver', 'admin'])->default('receiver');
+            $table->enum('verification', ['verified', 'not_verified'])->default('not_verified');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

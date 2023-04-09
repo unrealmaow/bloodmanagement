@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Donor\DashboardController;
+use App\Http\Controllers\Donor\ProfileController;
+use App\Http\Controllers\Donor\VerificationApplicationController;
 
 Route::middleware('auth')->group(function () {
 
@@ -13,9 +15,10 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/account', 'AccountController@index')->name('donor.account');
 
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('donor.profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('donor.profile.update');
+
+        Route::post('/verification/apply', [VerificationApplicationController::class, 'save'])->name('donor.verification.apply');
 
     });
 

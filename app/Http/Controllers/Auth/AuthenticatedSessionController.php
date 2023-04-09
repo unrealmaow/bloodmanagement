@@ -31,8 +31,8 @@ class AuthenticatedSessionController extends Controller
 
         if(strtolower(Auth::user()->role) == "donor"){
             return redirect()->intended(RouteServiceProvider::DONOR_HOME);
-        }elseif(strtolower(Auth::user()->role) == "taker"){
-            return redirect()->intended(RouteServiceProvider::TAKER_HOME);
+        }elseif(strtolower(Auth::user()->role) == "receiver"){
+            return redirect()->intended(RouteServiceProvider::RECEIVER_HOME);
         }else{
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
         }
