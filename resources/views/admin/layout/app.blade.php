@@ -38,6 +38,7 @@
     <!-- JQUERY JS -->
     <script src="{{ url('/sash') }}/assets/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>
@@ -509,7 +510,8 @@
                             <li class="slide">
                                 <a class="side-menu__item has-link" data-bs-toggle="slide"
                                     href="{{ route('admin.verification.applications') }}"><i
-                                        class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Applications</span></a>
+                                        class="side-menu__icon fe fe-home"></i><span
+                                        class="side-menu__label">Applications</span></a>
                             </li>
 
                         </ul>
@@ -1156,9 +1158,7 @@
         <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/popper.min.js"></script>
         <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-        <!-- SWEET-ALERT JS -->
-        <script src="{{ url('/sash') }}/assets/plugins/sweet-alert/sweetalert.min.js"></script>
-        <script src="{{ url('/sash') }}/assets/js/sweet-alert.js"></script>
+        
 
         <!-- SPARKLINE JS-->
         <script src="{{ url('/sash') }}/assets/js/jquery.sparkline.min.js"></script>
@@ -1249,11 +1249,50 @@
         </script>
         <script src="{{ url('/sash') }}/assets/plugins/fancyuploder/fancy-uploader.js"></script>
 
+        <!-- GALLERY JS -->
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/picturefill.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lightgallery.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lightgallery-1.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-pager.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-autoplay.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-fullscreen.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-zoom.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-hash.js"></script>
+        <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-share.js"></script>
+
         <script>
             function logoutFunction(event) {
                 event.preventDefault();
                 $('#logout_form').submit();
             }
+
+        </script>
+
+        <script>
+
+            $(document).ready(function() {
+                $('#delete_btn').click(function(e) {
+                    e.preventDefault();
+                    let url = $(this).attr('href');
+
+                    swal({
+                        title: 'Are you sure?',
+                        text: 'The Action Is Not Reversable Again!',
+                        icon: 'warning',
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href = url;
+                        } else {
+                            swal('Hmm, Changed Your Mind? ;-)');
+                        }
+                    });
+                });
+            });
+            
+           
 
         </script>
 
@@ -1264,7 +1303,7 @@
                 swal({
                     title: "Success.",
                     text: "{{ Session::get('success') }}",
-                    type: "success"
+                    icon: "success"
                 });
 
             </script>

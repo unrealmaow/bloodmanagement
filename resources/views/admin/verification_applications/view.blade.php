@@ -23,7 +23,7 @@
                     <h4 class="card-title">Verification Application # {{$application->id}}</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    
                         <div class="">
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label">Applicant Name</label>
@@ -53,9 +53,9 @@
                             </div>
                             <div class="card-body">
                                 <ul id="lightgallery" class="list-unstyled row">
-                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="../assets/images/media/1.jpg" data-src="../assets/images/media/1.jpg" data-sub-html="<h4>Gallery Image 1</h4><p> Many desktop publishing packages and web page editors now use Lorem Ipsum</p>">
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="{{asset($application->cnic_pic_path)}}" data-src="{{asset($application->cnic_pic_path)}}" data-sub-html="<h4>CNIC Image</h4>">
                                         <a href="javascript:void(0)">
-                                            <img class="img-responsive br-5" src="{{asset('/storage/'.$application->cnic_pic_path)}}" alt="Thumb-1">
+                                            <img class="img-responsive br-5" src="{{asset($application->cnic_pic_path)}}" alt="Thumb-1">
                                         </a>
                                     </li>
                                     
@@ -65,7 +65,7 @@
                             
                             
                         </div>
-                        <button class="btn btn-primary mt-4 mb-0">Submit</button>
+                        <div class="text-center"><a href="#" onclick="confirmDelete(event)" class="btn btn-success">Accept Application</a> &nbsp; <a id="delete_btn" href="{{ url('/admin/verification/applications/reject')}}/{{$application->id}}" class="btn btn-danger">Reject Application</a><div>
                     </form>
                 </div>
             </div>

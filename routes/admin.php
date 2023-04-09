@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/verification/applications', [VerificationApplicationController::class, 'index'])->name('admin.verification.applications');
         Route::get('/verification/applications/get-index-data', [VerificationApplicationController::class, 'getIndexData'])->name('admin.verification.applications.index-data');
         Route::get('/verification/applications/view/{id}', [VerificationApplicationController::class, 'viewApplication'])->name('admin.verification.applications.view');
+        Route::get('/verification/applications/accept/{id}', [VerificationApplicationController::class, 'acceptApplication'])->name('admin.verification.applications.accept');
+        Route::get('/verification/applications/reject/{id}', [VerificationApplicationController::class, 'rejectApplication'])->name('admin.verification.applications.reject');
     });
 
     

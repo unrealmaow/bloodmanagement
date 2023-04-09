@@ -29,4 +29,13 @@ class VerificationApplicationController extends Controller
         return view('admin.verification_applications.view', compact('application'));
         
     }
+
+    public function rejectApplication($id){
+        $application = VerificationApplication::find($id);
+        $application->status = "rejected";
+        $application->save();
+
+        Session::flash('success', __('messages.saved_successfully'));
+        return redirect(route('admin.verification.applications'));
+    }
 }
