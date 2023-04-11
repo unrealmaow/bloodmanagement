@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/verification/applications/view/{id}', [VerificationApplicationController::class, 'viewApplication'])->name('admin.verification.applications.view');
         Route::get('/verification/applications/accept/{id}', [VerificationApplicationController::class, 'acceptApplication'])->name('admin.verification.applications.accept');
         Route::get('/verification/applications/reject/{id}', [VerificationApplicationController::class, 'rejectApplication'])->name('admin.verification.applications.reject');
+        Route::get('/verification/applications/delete/{id}', [VerificationApplicationController::class, 'deleteApplication'])->name('admin.verification.applications.delete');
     });
 
     

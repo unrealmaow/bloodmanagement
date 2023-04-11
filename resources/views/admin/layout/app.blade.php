@@ -1271,13 +1271,12 @@
         <script>
 
             $(document).ready(function() {
-                $('#delete_btn').click(function(e) {
+                $('.confirm_a').click(function(e) {
                     e.preventDefault();
                     let url = $(this).attr('href');
 
                     swal({
                         title: 'Are you sure?',
-                        text: 'The Action Is Not Reversable Again!',
                         icon: 'warning',
                         buttons: true,
                         dangerMode: true,

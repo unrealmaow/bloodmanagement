@@ -65,7 +65,18 @@
                             
                             
                         </div>
-                        <div class="text-center"><a href="#" onclick="confirmDelete(event)" class="btn btn-success">Accept Application</a> &nbsp; <a id="delete_btn" href="{{ url('/admin/verification/applications/reject')}}/{{$application->id}}" class="btn btn-danger">Reject Application</a><div>
+                        <div class="text-center">
+                            @if($application->status == "pending")
+                            <a href="{{ url('/admin/verification/applications/accept')}}/{{$application->id}}" class="btn btn-success confirm_a">Accept Application</a> 
+                            &nbsp; 
+                            <a href="{{ url('/admin/verification/applications/reject')}}/{{$application->id}}" class="btn btn-danger confirm_a">Reject Application</a>
+
+                            @elseif($application->status == "approved")
+                            <a href="{{ url('/admin/verification/applications/reject')}}/{{$application->id}}" class="btn btn-danger confirm_a">Reject Application</a>
+                            @elseif($application->status == "rejected")
+                            <a href="{{ url('/admin/verification/applications/accept')}}/{{$application->id}}" class="btn btn-success confirm_a">Accept Application</a> 
+                            @endif
+                            <div>
                     </form>
                 </div>
             </div>

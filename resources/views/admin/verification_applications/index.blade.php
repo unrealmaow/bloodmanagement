@@ -33,7 +33,7 @@
                                                         <th class="wd-15p border-bottom-0">User</th>
                                                         <th class="wd-20p border-bottom-0">Role</th>
                                                         <th class="wd-15p border-bottom-0">Status</th>
-                                                        <th class="wd-10p border-bottom-0">Approved By</th>
+                                                        <th class="wd-10p border-bottom-0">Processed By</th>
                                                         <th class="wd-25p border-bottom-0">Cnic Num</th>
                                                         <th class="wd-25p border-bottom-0">Action</th>
                                                     </tr>
@@ -53,7 +53,40 @@
 
 @push('scripts')
 
+
 <script>
+
+function delete_app_confirmation(ev) {
+ev.preventDefault();
+var urlToRedirect = ev.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
+
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this Application!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
+  if (willDelete) {
+        window.location.href = urlToRedirect;
+  } else {
+    swal("Hmm; Changed Your Mind?");
+  }
+});
+}
+
+
+</script>
+
+
+
+<script>
+
+function approvedByRender(data, type, row){
+        
+}   
 $(function() {
     $("#applications_table").DataTable({
         "responsive": true,
