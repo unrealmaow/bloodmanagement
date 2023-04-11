@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Receiver\DashboardController;
 use App\Http\Controllers\Receiver\ProfileController;
 use App\Http\Controllers\Receiver\VerificationApplicationController;
+use App\Http\Controllers\Receiver\DonationRequestController;
 
 Route::middleware('auth')->group(function () {
 
@@ -19,6 +20,13 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('receiver.profile.update');
 
         Route::post('/verification/apply', [VerificationApplicationController::class, 'save'])->name('receiver.verification.apply');
+
+        #middleware is user verified
+        Route::group(["middleware" => 'isUserVerified'], function(){
+            Route::get('/donations/request/new', [DonationRequestController::class, 'requestNew'])->name('receiver.donations.request_new');
+            Route::post('/donations/request/new', [DonationRequestController::class, 'storeRequest'])->name('receiver.donations.store_request');
+        });
+
 
     });
 

@@ -16,11 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('applicant_type');
-            $table->enum('status', ['pending', 'approved'])->default('pending');
+            $table->enum('status', ['pending', 'rejected', 'approved'])->default('pending');
             $table->unsignedBigInteger('approved_by')->nullable();
             $table->foreign('approved_by')->references('id')->on('users');
             $table->string('cnic_num')->unique();
             $table->string('cnic_pic_path');
+            $table->unsignedBigInteger('bloodgroup_id')->nullable();
+            $table->foreign('bloodgroup_id')->references('id')->on('bloodgroups');
+            $table->string('bloodgroup_pic_path');
             $table->timestamps();
         });
     }

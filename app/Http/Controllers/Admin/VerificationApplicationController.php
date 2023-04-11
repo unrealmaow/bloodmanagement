@@ -67,6 +67,7 @@ class VerificationApplicationController extends Controller
         $application->save();
 
         $user = User::find($application->user_id);
+        $user->bloodgroup_id = $application->bloodgroup_id;
         $user->verification = "verified";
         $user->save();
 

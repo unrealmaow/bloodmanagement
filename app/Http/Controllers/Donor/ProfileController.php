@@ -9,6 +9,7 @@ use Session;
 use Auth;
 use Illuminate\Validation\Rule;
 use App\Models\VerificationApplication;
+use App\Models\BloodGroup;
 
 
 class ProfileController extends Controller
@@ -19,7 +20,8 @@ class ProfileController extends Controller
         if(VerificationApplication::where('user_id', Auth::user()->id)->exists()){
             $application_status = VerificationApplication::where('user_id', Auth::user()->id)->first()->status;
         }
-        return view("donor.edit_profile", compact('user', 'application_status'));
+        $blood_groups = BloodGroup::all();
+        return view("donor.edit_profile", compact('user', 'application_status', 'blood_groups'));
     }
 
     public function update(Request $request){

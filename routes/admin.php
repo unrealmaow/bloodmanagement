@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\VerificationApplicationController;
+use App\Http\Controllers\Admin\DonationRequestController;
+
 
 Route::middleware('auth')->group(function () {
 
@@ -23,6 +25,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/verification/applications/accept/{id}', [VerificationApplicationController::class, 'acceptApplication'])->name('admin.verification.applications.accept');
         Route::get('/verification/applications/reject/{id}', [VerificationApplicationController::class, 'rejectApplication'])->name('admin.verification.applications.reject');
         Route::get('/verification/applications/delete/{id}', [VerificationApplicationController::class, 'deleteApplication'])->name('admin.verification.applications.delete');
+        Route::get('/donations/requests', [DonationRequestController::class, 'index'])->name('admin.donation.requests');
+        Route::get('/donations/requests/get-index-data', [DonationRequestController::class, 'getIndexData'])->name('admin.donations.requests.index-data');
+        Route::get('/donations/requests/view/{id}', [DonationRequestController::class, 'viewRequest'])->name('admin.donations.requests.view');
+        
     });
 
     

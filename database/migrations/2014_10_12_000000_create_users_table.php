@@ -18,6 +18,8 @@ return new class extends Migration
             $table->enum('verification', ['verified', 'not_verified'])->default('not_verified');
             $table->string('email')->unique();
             $table->string('phone')->unique();
+            $table->unsignedBigInteger('bloodgroup_id')->nullable();
+            $table->foreign('bloodgroup_id')->references('id')->on('bloodgroups');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

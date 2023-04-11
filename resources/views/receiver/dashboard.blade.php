@@ -6,7 +6,7 @@
 
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
-                            <h1 class="page-title">Dashboard</h1>
+                            <h1 class="page-title">Receiver Dashboard</h1>
                             <div>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -46,7 +46,7 @@
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="mt-2">
-                                                        <h6 class="">Total Donations</h6>
+                                                        <h6 class="">Total Requests</h6>
                                                         <h2 class="mb-0 number-font">0</h2>
                                                     </div>
                                                     <div class="ms-auto">

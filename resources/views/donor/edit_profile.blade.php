@@ -180,7 +180,7 @@
                                     @csrf
                                     
                                     <div class="card-body">
-                                        <div class="row">
+                                        
                                                 <div class="form-group">
                                                     <label for="cnic_num">Cnic #</label>
                                                     <input required value="{{old('cnic_num')}}" type="text" class="form-control" name="cnic_num" id="cnic_no">
@@ -191,16 +191,44 @@
                                                     @endif
                                                 </div>
                                             
-                                        </div>
+                                        
                                         
                                         <div class="form-group">
                                             <label for="cnic_pic">Cnic Picture</label>
                                             <div class="col-lg-4 col-sm-12 mb-4 mb-lg-0">
-                                                <input name="cnic_pic" id="cnic_pic" type="file" class="dropify" data-bs-height="180">
+                                                <input required name="cnic_pic" id="cnic_pic" type="file" class="dropify" data-bs-height="180">
                                             </div>
                                             @if ($errors->has('cnic_pic'))
                                                 <span class="text-danger">
                                                     <strong>{{ $errors->first('cnic_pic') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label"> Blood Group</label>
+                                            <select required name="blood_group" class="form-control select2-show-search form-select" data-placeholder="Choose one">
+                                                <option label="Choose one"></option>
+                                                @foreach($blood_groups as $group)
+                                                    <option value="{{$group->id}}">{{$group->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('blood_group'))
+                                                        <span class="text-danger">
+                                                            <strong>{{ $errors->first('blood_group') }}</strong>
+                                                        </span>
+                                            @endif
+                                        </div>
+                                        
+
+                                        <div class="form-group">
+                                            <label for="bg_certificate">Blood Group Certificate</label>
+                                            <div class="col-lg-4 col-sm-12 mb-4 mb-lg-0">
+                                                <input required name="bg_certificate" id="cnic_pic" type="file" class="dropify" data-bs-height="180">
+                                            </div>
+                                            @if ($errors->has('bg_certificate'))
+                                                <span class="text-danger">
+                                                    <strong>{{ $errors->first('bg_certificate') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
