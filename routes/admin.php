@@ -28,7 +28,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/donations/requests', [DonationRequestController::class, 'index'])->name('admin.donation.requests');
         Route::get('/donations/requests/get-index-data', [DonationRequestController::class, 'getIndexData'])->name('admin.donations.requests.index-data');
         Route::get('/donations/requests/view/{id}', [DonationRequestController::class, 'viewRequest'])->name('admin.donations.requests.view');
-        
+        Route::get('/donations/requests/reject/{id}', [DonationRequestController::class, 'rejectApplication'])->name('admin.donations.requests.reject');
+        Route::get('/donations/requests/accept/{id}', [DonationRequestController::class, 'acceptApplication'])->name('admin.donations.requests.accept');
+
     });
 
     

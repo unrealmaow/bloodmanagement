@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\BloodGroup;
 use App\Models\DonationRequest;
 use Auth;
@@ -33,9 +34,9 @@ class DonationRequestController extends Controller
         ->editColumn('isVerifiedByAdmin', function($donation){
             
             if($donation->isVerifiedByAdmin == true){
-                return '<span class="badge bg-primary-gradient badge-sm  me-1 mb-1 mt-1">Verified</span>';
+                return '<span class="badge bg-primary-gradient badge-sm  me-1 mb-1 mt-1">Processed</span>';
             }else{
-                return '<span class="badge bg-warning-gradient badge-sm  me-1 mb-1 mt-1">Not Verified</span>';
+                return '<span class="badge bg-warning-gradient badge-sm  me-1 mb-1 mt-1">Not Processed Yet</span>';
             }
         })
         ->editColumn('verified_by', function($donation){
@@ -53,6 +54,31 @@ class DonationRequestController extends Controller
     }
 
     public function viewRequest($id){
-        echo "to be developed";
+        $donation = DonationRequest::find($id);
+        return view('admin.donations.view', compact('donation'));
+    }
+
+    public function rejectApplication($id){
+        $donation = DonationRequest::find($id);
+        $donation->isVerifiedByAdmin = true;
+        $donation->verified_by = Auth::user()->id;
+        $donation->status = "rejected";
+        $donation->save();
+
+        Session::flash('success', __('messages.donation_request_rejected'));
+        return redirect(route('admin.donation.requests'));
+    }
+
+    public function acceptApplication($id){
+
+        $donation = DonationRequest::find($id);
+        $donation->isVerifiedByAdmin = true;
+        $donation->verified_by = Auth::user()->id;
+        $donation->status = "pending";
+        $donation->save();
+
+        Session::flash('success', __('messages.donation_request_accepted'));
+        return redirect(route('admin.donation.requests'));
+
     }
 }

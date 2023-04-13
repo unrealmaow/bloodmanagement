@@ -1,6 +1,7 @@
 <!-- BOOTSTRAP JS -->
 <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/popper.min.js"></script>
 <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Latest compiled JavaScript -->
 
 
 
@@ -31,6 +32,10 @@
 
 <!-- INTERNAL SELECT2 JS -->
 <script src="{{ url('/sash') }}/assets/plugins/select2/select2.full.min.js"></script>
+<script src="{{url('/sash')}}/assets/js/select2.js"></script>
+
+<!-- Sticky js -->
+<script src="{{url('/sash')}}/assets/js/sticky.js"></script>
 
 <!-- INTERNAL Data tables js-->
 <script src="{{ url('/sash') }}/assets/plugins/datatable/js/jquery.dataTables.min.js">
@@ -104,9 +109,7 @@
 <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-hash.js"></script>
 <script src="{{ url('/sash') }}/assets/plugins/gallery/lg-share.js"></script>
 
-<!-- SELECT2 JS -->
-<script src="{{url('/sash')}}/assets/plugins/select2/select2.full.min.js"></script>
-<script src="{{url('/sash')}}/assets/js/select2.js"></script>
+
 
 <!-- INTERNAL WYSIWYG Editor JS -->
 <script src="{{url('/sash')}}/assets/plugins/wysiwyag/jquery.richtext.js"></script>

@@ -30,12 +30,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="wd-15p border-bottom-0">ID</th>
-                                                        <th class="wd-15p border-bottom-0">User</th>
                                                         <th class="wd-20p border-bottom-0">Blood Group</th>
                                                         <th class="wd-20p border-bottom-0">Status</th>
-                                                        <th class="wd-15p border-bottom-0">Processed</th>
-                                                        <th class="wd-10p border-bottom-0">Verified By</th>
-                                                        <th class="wd-25p border-bottom-0">Donor</th>
+                                                        <th class="wd-15p border-bottom-0">Admin Verification</th>
                                                         <th class="wd-25p border-bottom-0">Action</th>
                                                     </tr>
                                                 </thead>
@@ -57,26 +54,6 @@
 
 <script>
 
-function delete_app_confirmation(ev) {
-ev.preventDefault();
-var urlToRedirect = ev.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
-
-swal({
-  title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this Application!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
-  if (willDelete) {
-        window.location.href = urlToRedirect;
-  } else {
-    swal("Hmm; Changed Your Mind?");
-  }
-});
-}
 
 
 </script>
@@ -95,15 +72,12 @@ $(function() {
         serverSide: true,
         pageLength: 25,
         order: [ [0, 'desc'] ],
-        ajax: '{!! route('admin.donations.requests.index-data') !!}',
+        ajax: '{!! route('receiver.donations.get_index_data') !!}',
         columns: [
                 {data: 'id', name: 'id'},
-                {data: 'user.name', name: 'user.name'},
                 {data: 'bloodgroup.name', name: 'bloodgroup.name'},
                 {data: 'status', name: 'status'},
                 {data: 'isVerifiedByAdmin', name: 'isVerifiedByAdmin'},
-                {data: 'verified_by', name: 'verified_by'},
-                {data: 'donor_id', name: 'donor_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
     });

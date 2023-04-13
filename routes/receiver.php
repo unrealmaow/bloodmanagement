@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 
         #middleware is user verified
         Route::group(["middleware" => 'isUserVerified'], function(){
+            Route::get('/donations/request/list', [DonationRequestController::class, 'index'])->name('receiver.donations.list');
+            Route::get('/donations/request/get-index-data', [DonationRequestController::class, 'getIndexData'])->name('receiver.donations.get_index_data');
             Route::get('/donations/request/new', [DonationRequestController::class, 'requestNew'])->name('receiver.donations.request_new');
             Route::post('/donations/request/new', [DonationRequestController::class, 'storeRequest'])->name('receiver.donations.store_request');
         });

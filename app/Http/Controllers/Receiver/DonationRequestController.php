@@ -8,8 +8,42 @@ use App\Models\BloodGroup;
 use App\Models\DonationRequest;
 use Auth;
 use Session;
+use Str;
+
 class DonationRequestController extends Controller
 {
+
+    public function index(){
+        return view('receiver.donations.index');
+    }
+
+    public function getIndexData(){
+        $donations = DonationRequest::with(['bloodgroup'])->where('user_id', Auth::user()->id)->get();
+        return datatables()
+        ->of($donations)
+        ->editColumn('status', function($donation){
+            
+            if($donation->status == "completed"){
+                return '<span class="badge bg-primary-gradient badge-sm  me-1 mb-1 mt-1">'.Str::title($donation->status).'</span>';
+            }elseif($donation->status == "rejected"){
+                return '<span class="badge bg-danger-gradient badge-sm  me-1 mb-1 mt-1">'.Str::title($donation->status).'</span>';
+            }else{
+                return '<span class="badge bg-warning-gradient badge-sm  me-1 mb-1 mt-1">'.Str::title($donation->status).'</span>';
+            }
+        })
+        ->editColumn('isVerifiedByAdmin', function($donation){
+            
+            if($donation->isVerifiedByAdmin == true){
+                return '<span class="badge bg-primary-gradient badge-sm  me-1 mb-1 mt-1">Verified</span>';
+            }else{
+                return '<span class="badge bg-warning-gradient badge-sm  me-1 mb-1 mt-1">Not Verified Yet</span>';
+            }
+        })
+        ->addColumn('action', 'receiver.donations.index-buttons')
+        ->rawColumns(['action', 'status', 'isVerifiedByAdmin'])
+        ->toJson();
+    }
+
     public function requestNew(){
         $blood_groups = BloodGroup::all();
         return view('receiver.donations.request_new', compact('blood_groups'));
@@ -36,6 +70,6 @@ class DonationRequestController extends Controller
         ]);
 
         Session::flash('success', __('messages.donation_request_placed'));
-        return back();
+        return redirect(route('receiver.donations.list'));
     }
 }
