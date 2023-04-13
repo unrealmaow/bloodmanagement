@@ -28,5 +28,10 @@ class DonationRequest extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function donor()
+    {
+        return $this->belongsTo(User::class, 'donor_id');
+    }
     
 }

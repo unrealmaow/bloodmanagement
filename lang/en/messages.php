@@ -13,6 +13,7 @@ return [
     'donation_request_placed' => 'Donation Request Placed Successfully.',
     'donation_request_rejected' => 'Donation Request is rejected successfully.',
     'donation_request_accepted' => 'Donation Request is accepted successfully.',
-    'donation_request_accepted_by_donor' => 'Request Accepted Successfully.'
+    'donation_request_accepted_by_donor' => 'Request Accepted Successfully.',
+    'donation_request_deleted' => 'Donation Request is deleted successfully.'
 
 ];

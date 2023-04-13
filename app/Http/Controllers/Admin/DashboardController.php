@@ -20,4 +20,15 @@ class DashboardController extends Controller
         
         
     }
+
+
+    public function dummy()
+    {
+            
+            $total_donors = User::where('role', 'donor')->count();
+            $total_receivers = User::where('role', 'receiver')->count();
+            return view('admin.dummy', compact('total_receivers', 'total_donors'));
+        
+        
+    }
 }

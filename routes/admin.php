@@ -13,6 +13,7 @@ Route::middleware('auth')->group(function () {
 
         //dashboard controller
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/dummy', [DashboardController::class, 'dummy'])->name('admin.dashboard');
 
         // Route::get('/account', 'AccountController@index')->name('admin.account');
 
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/donations/requests/view/{id}', [DonationRequestController::class, 'viewRequest'])->name('admin.donations.requests.view');
         Route::get('/donations/requests/reject/{id}', [DonationRequestController::class, 'rejectApplication'])->name('admin.donations.requests.reject');
         Route::get('/donations/requests/accept/{id}', [DonationRequestController::class, 'acceptApplication'])->name('admin.donations.requests.accept');
+        Route::get('/donations/requests/delete/{id}', [DonationRequestController::class, 'deleteApplication'])->name('admin.donations.requests.delete');
 
     });
 

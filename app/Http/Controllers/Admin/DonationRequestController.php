@@ -81,4 +81,10 @@ class DonationRequestController extends Controller
         return redirect(route('admin.donation.requests'));
 
     }
+
+    public function deleteApplication($id){
+        DonationRequest::destroy($id);
+        Session::flash('success', __('messages.donation_request_deleted'));
+        return redirect(route('admin.donation.requests'));
+    }
 }

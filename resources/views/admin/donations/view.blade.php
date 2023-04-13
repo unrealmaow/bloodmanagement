@@ -38,12 +38,17 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="form-label">Donor</label>
-                            <input readonly class="form-control" value="something to be here">
+                            <input readonly class="form-control" value="{{$donation->donor_id == null ? 'Not Accepted By Any Donor Yet.' : $donation->donor->name}}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="form-label">Request Status</label>
                             <input readonly class="form-control" value="{{ $donation->status }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Case Details</label>
+                            <div readonly class="form-control" id="case_details" cols="30" rows="10">{!! $donation->case_details !!}</div>
                         </div>
                         
 

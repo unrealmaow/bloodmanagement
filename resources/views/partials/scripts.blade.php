@@ -1,3 +1,8 @@
+<!-- JQUERY JS -->
+<script src="{{ url('/sash') }}/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- BOOTSTRAP JS -->
 <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/popper.min.js"></script>
 <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -9,7 +14,7 @@
 <script src="{{ url('/sash') }}/assets/js/jquery.sparkline.min.js"></script>
 
 <!-- Sticky js -->
-<script src="{{ url('/sash') }}/assets/js/sticky.js"></script>
+{{-- <script src="{{ url('/sash') }}/assets/js/sticky.js"></script> --}}
 
 <!-- CHART-CIRCLE JS-->
 <script src="{{ url('/sash') }}/assets/js/circle-progress.min.js"></script>
