@@ -52,7 +52,7 @@
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->updatePassword->first('current_password') }}</strong>
                                                         </span>
-                                                @endif
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">New Password</label>

@@ -1,36 +1,101 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<!doctype html>
+<html lang="en" dir="ltr">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/sash') }}/assets/images/brand/favicon.ico">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <!-- TITLE -->
+    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="{{ url('/sash') }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- STYLE CSS -->
+     <link href="{{ url('/sash') }}/assets/css/style.css" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+    <link href="{{ url('/sash') }}/assets/css/plugins.css" rel="stylesheet">
+
+    <!--- FONT-ICONS CSS -->
+    <link href="{{ url('/sash') }}/assets/css/icons.css" rel="stylesheet">
+
+    <!-- INTERNAL Switcher css -->
+    <link href="{{ url('/sash') }}/assets/switcher/css/switcher.css" rel="stylesheet">
+    <link href="{{ url('/sash') }}/assets/switcher/demo.css" rel="stylesheet">
+
+</head>
+
+<body class="app sidebar-mini ltr login-img">
+
+    <!-- BACKGROUND-IMAGE -->
+    <div class="">
+
+        <!-- GLOABAL LOADER -->
+        <div id="global-loader">
+            <img src="{{ url('/sash') }}/assets/images/loader.svg" class="loader-img" alt="Loader">
         </div>
-    </body>
+        <!-- /GLOABAL LOADER -->
+
+        <!-- PAGE -->
+        <div class="page">
+            <div class="">
+                <!-- Theme-Layout -->
+
+                <!-- CONTAINER OPEN -->
+                <div class="col col-login mx-auto mt-7">
+                    <div class="text-center">
+                        <a href="index.html"><img src="{{ url('/sash') }}/assets/images/brand/logo-white.png" class="header-brand-img" alt=""></a>
+                    </div>
+                </div>
+
+                @yield('content')
+                
+                <!-- CONTAINER CLOSED -->
+            </div>
+        </div>
+        <!-- End PAGE -->
+
+    </div>
+    <!-- BACKGROUND-IMAGE CLOSED -->
+
+    <!-- JQUERY JS -->
+    <script src="{{ url('/sash') }}/assets/js/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="{{ url('/sash') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- SHOW PASSWORD JS -->
+    <script src="{{ url('/sash') }}/assets/js/show-password.min.js"></script>
+
+    <!-- GENERATE OTP JS -->
+    <script src="{{ url('/sash') }}/assets/js/generate-otp.js"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="{{ url('/sash') }}/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+
+    <!-- Color Theme js -->
+    <script src="{{ url('/sash') }}/assets/js/themeColors.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="{{ url('/sash') }}/assets/js/custom.js"></script>
+
+    <!-- Custom-switcher -->
+    <script src="{{ url('/sash') }}/assets/js/custom-swicher.js"></script>
+
+    <!-- Switcher js -->
+    <script src="{{ url('/sash') }}/assets/switcher/js/switcher.js"></script>
+
+</body>
+
 </html>

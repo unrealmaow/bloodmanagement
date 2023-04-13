@@ -1,68 +1,98 @@
-<x-guest-layout>
-    <center><h1 style="color: white">Register as Donator?</h1></center>
-    <form method="POST" action="{{ route('store_donator') }}">
-        @csrf
+@extends('layouts.app')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('content')
+    <div class="container-login100">
+        <div class="wrap-login100 p-6">
+            <form class="login100-form validate-form" method="POST" action="{{ route('store_donator') }}">
+                @csrf
+                <span class="login100-form-title">
+                    Donor Registration
+                </span>
+                <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        <i class="mdi mdi-account" aria-hidden="true"></i>
+                    </a>
+                    <input required name="name" id="name" class="input100 border-start-0 ms-0 form-control"
+                        type="text" placeholder="Full Name">
+                </div>
+                @if ($errors->has('name'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
+                <div class="wrap-input100 validate-input input-group"
+                    data-bs-validate="Valid email is required: ex@abc.xyz">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                    </a>
+                    <input required name="email" id="email" class="input100 border-start-0 ms-0 form-control"
+                        type="email" placeholder="Email">
+                </div>
+
+                @if ($errors->has('email'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+
+                <div class="wrap-input100 validate-input input-group"
+                    data-bs-validate="Valid Phone is required: 03016665550">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        <i class="zmdi zmdi-phone" aria-hidden="true"></i>
+                    </a>
+                    <input required name="phone" id="phone" class="input100 border-start-0 ms-0 form-control"
+                        type="number" placeholder="Phone No">
+                </div>
+
+                @if ($errors->has('phone'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                @endif
+
+                <div class="wrap-input100 validate-input input-group" id="Password-toggle">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                    </a>
+                    <input required name="password" id="password" class="input100 border-start-0 ms-0 form-control"
+                        type="password" placeholder="Password">
+                </div>
+
+                @if ($errors->has('password'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+
+                <div class="wrap-input100 validate-input input-group" id="Password-toggle">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                    </a>
+                    <input required name="password_confirmation" id="password_confirmation"
+                        class="input100 border-start-0 ms-0 form-control" type="password" placeholder="Confirm Password">
+                </div>
+
+                @if ($errors->has('password_confirmation'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                    </span>
+                @endif
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn btn-primary">Regiser As Donor</button>
+                </div>
+                <div class="text-center pt-3">
+                    <p class="text-dark mb-0 d-inline-flex">Already have account ?<a href="{{ route('login') }}"
+                            class="text-primary ms-1">Sign In</a></p>
+                </div>
+
+                <div class="text-center pt-3">
+                    <p class="text-dark mb-0 d-inline-flex">Want to Receive Donations ?<a href="{{ route('register') }}"
+                            class="text-primary ms-1">Register As Receiver</a></p>
+                </div>
+
+            </form>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required  />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="mt-4">
-            <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required  />
-            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-left mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-            
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                {{ __('Register As Taker?') }}
-        </a>
-            
-        </div>
-        
-    </form>
-</x-guest-layout>
+    </div>
+    <!-- CONTAINER CLOSED -->
+@endsection
