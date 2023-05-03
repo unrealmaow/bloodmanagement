@@ -10,6 +10,7 @@ use Auth;
 use Illuminate\Validation\Rule;
 use App\Models\VerificationApplication;
 use App\Models\BloodGroup;
+use App\Models\City;
 
 
 class ProfileController extends Controller
@@ -21,7 +22,8 @@ class ProfileController extends Controller
             $application_status = VerificationApplication::where('user_id', Auth::user()->id)->first()->status;
         }
         $blood_groups = BloodGroup::all();
-        return view("donor.edit_profile", compact('user', 'application_status', 'blood_groups'));
+        $cities = City::all();
+        return view("donor.edit_profile", compact('user', 'application_status', 'blood_groups', 'cities'));
     }
 
     public function update(Request $request){

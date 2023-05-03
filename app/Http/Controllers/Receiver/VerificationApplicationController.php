@@ -15,6 +15,7 @@ class VerificationApplicationController extends Controller
         $request->validate([
             'cnic_num' => ['required', 'string', 'max:25', 'unique:'.VerificationApplication::class],
             'cnic_pic' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'city' => ['required'],
         ]);
 
         $file = $request->file('cnic_pic');
@@ -27,7 +28,8 @@ class VerificationApplicationController extends Controller
             'applicant_type' => Auth::user()->role,
             'status' => 'pending',
             'cnic_num' => $request->cnic_num,
-            'cnic_pic_path' => $path
+            'cnic_pic_path' => $path,
+            'city_id' => $request->city
         ]);
 
         Session::flash('success', __('messages.verification_application_applied'));

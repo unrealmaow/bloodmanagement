@@ -9,6 +9,7 @@ use Session;
 use Auth;
 use Illuminate\Validation\Rule;
 use App\Models\VerificationApplication;
+use App\Models\City;
 
 
 class ProfileController extends Controller
@@ -19,7 +20,8 @@ class ProfileController extends Controller
         if(VerificationApplication::where('user_id', Auth::user()->id)->exists()){
             $application_status = VerificationApplication::where('user_id', Auth::user()->id)->first()->status;
         }
-        return view("receiver.edit_profile", compact('user', 'application_status'));
+        $cities = City::all();
+        return view("receiver.edit_profile", compact('user', 'application_status', 'cities'));
     }
 
     public function update(Request $request){

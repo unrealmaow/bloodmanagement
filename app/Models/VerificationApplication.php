@@ -19,7 +19,8 @@ class VerificationApplication extends Model
         'cnic_num',
         'cnic_pic_path',
         'bloodgroup_id',
-        'bloodgroup_pic_path'
+        'bloodgroup_pic_path',
+        'city_id'
     ];
 
     public function user()
@@ -30,5 +31,10 @@ class VerificationApplication extends Model
     public function bloodgroup()
     {
         return $this->belongsTo(BloodGroup::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('bloodgroup_id')->nullable();
             $table->foreign('bloodgroup_id')->references('id')->on('bloodgroups');
             $table->string('bloodgroup_pic_path');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }

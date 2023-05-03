@@ -64,6 +64,7 @@ class DonationRequestController extends Controller
         DonationRequest::create([
             'user_id' => Auth::user()->id,
             'bloodgroup_id' => $request->blood_group,
+            'city_id' => Auth::user()->city_id,
             'status' => 'pending',
             'case_details' => $request->case_details,
             'proof_pic_path' => $path

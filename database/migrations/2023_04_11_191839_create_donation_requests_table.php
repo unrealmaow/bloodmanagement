@@ -24,6 +24,8 @@ return new class extends Migration
             $table->foreign('verified_by')->references('id')->on('users');
             $table->unsignedBigInteger('donor_id')->nullable();
             $table->foreign('donor_id')->references('id')->on('users');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->enum('status', ['pending', 'rejected', 'completed'])->default('pending');
             $table->timestamps();
         });

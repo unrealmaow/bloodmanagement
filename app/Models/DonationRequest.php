@@ -15,6 +15,7 @@ class DonationRequest extends Model
         'isVerifiedByAdmin',
         'verified_by',
         'donor_id',
+        'city_id',
         'status'
     ];
 
@@ -32,6 +33,11 @@ class DonationRequest extends Model
     public function donor()
     {
         return $this->belongsTo(User::class, 'donor_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
     
 }

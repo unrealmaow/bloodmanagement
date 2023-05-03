@@ -19,7 +19,10 @@ class VerificationApplicationController extends Controller
             'cnic_pic' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:2048'],
             'bg_certificate' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:2048'],
             'blood_group' => ['required'],
+            'city' => ['required'],
         ]);
+
+        
 
         $file = $request->file('cnic_pic');
         $filename = Auth::user()->id . '_cnic_' . uniqid() . '.' . $file->getClientOriginalExtension();
@@ -37,7 +40,8 @@ class VerificationApplicationController extends Controller
             'cnic_num' => $request->cnic_num,
             'cnic_pic_path' => $path,
             'bloodgroup_id' => $request->blood_group,
-            'bloodgroup_pic_path' => $path2
+            'bloodgroup_pic_path' => $path2,
+            'city_id' => $request->city
         ]);
 
         Session::flash('success', __('messages.verification_application_applied'));

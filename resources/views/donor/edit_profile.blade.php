@@ -232,6 +232,21 @@
                                                 </span>
                                             @endif
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label"> City Name</label>
+                                            <select required name="city" class="form-control select2-show-search form-select" data-placeholder="Choose one">
+                                                <option label="Choose one"></option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('city'))
+                                                        <span class="text-danger">
+                                                            <strong>{{ $errors->first('city') }}</strong>
+                                                        </span>
+                                            @endif
+                                        </div>
                                         
                                         
                                         <!-- <div class="form-group">

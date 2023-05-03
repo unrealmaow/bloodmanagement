@@ -26,6 +26,11 @@
 
                     <div class="">
                         <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">City Name</label>
+                            <input readonly class="form-control" value="{{ $donation->city->name }}">
+                        </div>
+
+                        <div class="form-group">
                             <label for="exampleInputEmail1" class="form-label">Receiver Name</label>
                             <input readonly class="form-control" value="{{ $donation->user->name }}">
                         </div>

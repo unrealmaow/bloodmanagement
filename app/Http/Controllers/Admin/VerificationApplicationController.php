@@ -69,6 +69,7 @@ class VerificationApplicationController extends Controller
         $user = User::find($application->user_id);
         $user->bloodgroup_id = $application->bloodgroup_id;
         $user->verification = "verified";
+        $user->city_id = $application->city_id;
         $user->save();
 
         Session::flash('success', __('messages.saved_successfully'));

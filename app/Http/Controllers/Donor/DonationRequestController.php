@@ -13,12 +13,13 @@ use Str;
 class DonationRequestController extends Controller
 {
     public function index(){
+        
         return view('donor.donations.list');
     }
 
 
     public function getIndexData(){
-        $donations = DonationRequest::with(['bloodgroup', 'user'])->where('status', "pending")->where('donor_id', NULL)->where('isVerifiedByAdmin', true)->where('bloodgroup_id', Auth::user()->bloodgroup_id)->get();
+        $donations = DonationRequest::with(['bloodgroup', 'user'])->where('status', "pending")->where('donor_id', NULL)->where('isVerifiedByAdmin', true)->where('bloodgroup_id', Auth::user()->bloodgroup_id)->where('city_id', Auth::user()->city_id)->get();
         return datatables()
         ->of($donations)
         ->editColumn('isVerifiedByAdmin', function($donation){

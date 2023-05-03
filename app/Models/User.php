@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'role',
         'phone',
-        'bloodgroup_id'
+        'bloodgroup_id',
+        'city_id'
     ];
 
     /**
@@ -48,5 +49,10 @@ class User extends Authenticatable
     public function bloodgroup()
     {
         return $this->belongsTo(BloodGroup::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }
